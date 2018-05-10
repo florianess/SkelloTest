@@ -12,8 +12,30 @@ For example, ‘0x0f4’, ‘0acdadecf822eeff32aca5830e438cb54aa722e3’, ‘8BA
 -  f(n)= 3 * f(n-1) - f(n-2);
 Provide an implementation for ‘f’. Bonus points for a non recursive implementation.
 
->function f(n){
+>function f(n) {
+  if (n == 2) {
+    return 3*3-1
+  } else if (n == 1) {
+    return 3
+  } else {
+    return 3*f(n-1) - f(n-2);
+  }
+}
 
+OR
+
+function f(n) {
+  n2 = 1;
+  n1 = 3;
+  res = 0;
+  i = 2
+  while (n >= i) {
+    res = n1*3 - n2;
+    n2 = n1;
+    n1 = res
+    i++
+  }
+  return res
 }
 
 BACKEND - MySQL
