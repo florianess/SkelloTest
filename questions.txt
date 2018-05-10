@@ -1,0 +1,56 @@
+BACKEND - Programming
+These can be done in any language you're comfortable with
+
+1. Give a regular expression that detects hexadecimal numbers in a text.
+For example, ‘0x0f4’, ‘0acdadecf822eeff32aca5830e438cb54aa722e3’, ‘8BADF00D’ should be detected.
+
+> \[[:xdigit]]+\g or \[0-9a-fA-F]+\g
+
+2.Here is the pseudo code of a function that is defined recursively:
+-  f(0) = 1;
+-  f(1) = 3;
+-  f(n)= 3 * f(n-1) - f(n-2);
+Provide an implementation for ‘f’. Bonus points for a non recursive implementation.
+
+>function f(n){
+
+}
+
+BACKEND - MySQL
+
+1. Write a CREATE TABLE query for a table storing information on users. It will store:
+  - id,
+  - firstname,
+  - lastname,
+  - gender,
+  - email,
+  - created_at
+
+> CREATE TABLE user (
+    id INT NOT NULL AUTO_INCREMENT,
+    firstname VCHAR(30),
+    lastname VCHAR(30),
+    gender VCHAR(30),
+    email VCHAR(50),
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    PRIMARY KEY(id));
+
+2. Write a query on the previous table that lists the 10 most recently added users.
+
+> SELECT *
+  FROM user
+  ORDER BY created_at DESC LIMIT 10;
+
+GENERAL - Creativity
+Si vous êtes Français, vous pouvez répondre en Français.
+
+1. Describe the color yellow to someone who is blind
+
+> Jaune est la couleur du soleil brillant qui illumine ta peau. Jaune c'est aussi la couleur acidulé du citron
+ou encore le moelleux d'une éponge ou les plumes d'un poussin.
+
+3. Describe the data model you’d use for a Battleship game. What are the key objects? How will your code use them?
+
+> Il y aurait deja le modele du plateau qui représente chaque case. Puis un modèle pour chaque type de pièce (porte avion, sousmarin etc).
+Ces modèles seront lié avec le plateau pour dire si une case est vide ou pas. Le joueur choisira où positionner ces pièces en début de partie.
+Puis chaque joueur créera un objet boulet permettant de ciblé le plateau donc les pièces. Ainsi si un boulet touche une pièce du plateau bingo.

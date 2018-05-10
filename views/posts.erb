@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post App</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-1 text-center">LIST POSTS</h1>
+      <% @posts.each_with_index do |post, index| -%>
+      <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <h2 class="display-4"><%=post[:title]%></h2>
+              <hr class="my-4">
+              <p><%= post[:content]%></p>
+              <% if post[:rating] -%>
+              <% post[:rating].to_i.times do-%>
+                  <i class="material-icons">star</i>
+                <% end -%>
+                <% (5-post[:rating].to_i).times do-%>
+                  <i class="material-icons">star_border</i>
+                <% end -%>
+              <% end -%>
+              <p class="lead">
+                <a class="btn btn-primary btn-lg" href=<%="http://localhost:4567/post/"+index.to_s%> role="button">
+                  Comments <span class="badge badge-light"><%=@comments[index].length%></span>
+                </a>
+              </p>
+            </div>
+            <div class="col-md-4">
+              <% if post[:photo] -%>
+              <a href=<%="http://localhost:4567/post/"+index.to_s%>><img class="img-rounded" height="350" src=<%=post[:photo]%>></a>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </body>
+</html>

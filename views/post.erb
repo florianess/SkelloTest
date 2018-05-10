@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post App</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <h1 class="display-3"><%=@post[:title]%></h2>
+              <hr class="my-4">
+              <p><%= @post[:content]%></p>
+            </div>
+            <div class="col-md-4">
+              <% if @post[:photo] -%>
+              <img class="img-rounded" width="350" src=<%=@post[:photo]%>>
+              <% end -%>
+            </div>
+          </div>
+        <hr class="my-4">
+        <h2 class="display-4">Comments (<%=@comments.length%>)
+          <% if @post[:rating] -%>
+          <% @post[:rating].to_i.times do-%>
+              <i class="material-icons">star</i>
+            <% end -%>
+            <% (5-@post[:rating].to_i).times do-%>
+              <i class="material-icons">star_border</i>
+            <% end -%>
+          <% end -%>
+        </h2>
+        <ul class="list-group list-group-flush">
+          <% @comments.each do |comment,index| -%>
+            <li class="list-group-item"><%=comment%></li>
+          <% end -%>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
