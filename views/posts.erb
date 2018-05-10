@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="container">
-      <h1 class="display-1 text-center">LIST POSTS</h1>
+      <h1 class="display-1 text-center">Post App</h1>
       <% @posts.each_with_index do |post, index| -%>
       <div class="jumbotron">
         <div class="container">
@@ -28,7 +30,17 @@
                 <% end -%>
               <% end -%>
               <p class="lead">
-                <a class="btn btn-primary btn-lg" href=<%="http://localhost:4567/post/"+index.to_s%> role="button">
+                <a class="btn btn-primary btn-large" role="button" href=<%="http://localhost:4567/post/"+index.to_s%>
+                   data-toggle="popover"
+                   data-html="true"
+                   data-trigger="hover"
+                   data-placement="right"
+                   title="Comments"
+                   data-content=
+                   "<% @comments[index].each do |comment,index| -%>
+                     <li><%=comment%></li>
+                   <% end -%>"
+                >
                   Comments <span class="badge badge-light"><%=@comments[index].length%></span>
                 </a>
               </p>
@@ -43,5 +55,10 @@
       </div>
       <% end -%>
     </div>
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+      });
+    </script>
   </body>
 </html>

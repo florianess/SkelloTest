@@ -1,6 +1,4 @@
 require "sinatra"
-require "erb"
-require = 'json'
 require "sinatra/reloader" if development?
 require_relative "database"
 

@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="container">
+      <h1 class="display-1 text-center">Post App</h1>
       <div class="jumbotron">
         <div class="container">
           <div class="row">
@@ -25,7 +26,8 @@
             </div>
           </div>
         <hr class="my-4">
-        <h2 class="display-4">Comments (<%=@comments.length%>)
+        <h2 class="display-4">Comments
+          <span class="badge badge-light"><%=@comments.length%></span>
           <% if @post[:rating] -%>
           <% @post[:rating].to_i.times do-%>
               <i class="material-icons">star</i>
@@ -40,6 +42,7 @@
             <li class="list-group-item"><%=comment%></li>
           <% end -%>
         </ul>
+        <a href="http://localhost:4567/" class="btn btn-primary btn-large" role="button">Return list</a>
       </div>
     </div>
   </body>
